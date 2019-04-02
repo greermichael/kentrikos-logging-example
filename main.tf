@@ -17,10 +17,11 @@ module "aws_fluentd_es_docker" {
 
   git_repo_url    = "https://github.com/greermichael/fluentd-aws-elasticsearch.git"
   repository_name = "aws-fluentd-elasticsearch"
+  ecr_image_tag = "latest"
 }
 
 module "logging_infrastructure" {
-  source = "github.com/greermichael/terraform-aws-logging"
+  source = "github.com/greermichael/terraform-aws-fluentd-elasticsearch.git"
 
   region                                        = "${var.region}"
   vpc_id                                        = "${var.vpc_id}"
